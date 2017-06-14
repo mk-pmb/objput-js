@@ -1,0 +1,24 @@
+{ "name": "objput",
+  "version": "0.1.0",
+  "description": "Put that value in that slot of that object, then call that callback.",
+  "keywords": [ "control flow" ],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/objput-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/objput-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/objput-js/issues"
+  },
+
+  "private": false, "license": "ISC",
+
+  "main": "objput.js",
+  "scripts": { "test": "nodejs test/usage.js" },
+  "directories": { "test": "test" },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}
