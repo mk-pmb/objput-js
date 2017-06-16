@@ -24,6 +24,10 @@ var eq = require('equal-pmb');
     counter(5, results.store.bind(results, 'eggs'));
   });
 
+  objPut(results,
+    [ null, 'herbs',  'water',  'kettle', null,   'boil',   'tea' ],
+    [ 101,  102,      103,      104,      105,    106   ]);
+
   expectEqual(results, {
     apple: 0,
     bacon: 2,
@@ -31,6 +35,13 @@ var eq = require('equal-pmb');
     dango: '🍡',
     eggs: 10,
     hello: 'world',
+
+    herbs: 102,
+    water: 103,
+    kettle: 104,
+    boil: 106,
+    tea: undefined,
+
     store: objPut.mthd,
   });
   //#r

@@ -1,5 +1,5 @@
 { "name": "objput",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Put that value in that slot of that object, then call that callback.",
   "keywords": [ "control flow" ],
 

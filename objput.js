@@ -2,15 +2,24 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-function objPut(o, k, v, then) {
-  o[k] = v;
-  return (then ? then() : o);
+function zip(a, b, f) { return a.map(function (v, i) { return f(v, b[i]); }); }
+
+function core(d, k, v) {
+  if (k === null) { return; }
+  if (k === false) { return; }
+  if (k === undefined) { return; }
+  if (k && k.map) { return zip(k, v, core.bind(null, d)); }
+  d[k] = v;
 }
 
-objPut.cb = function (o, k) {
-  return function (v, then) { return objPut(o, k, v, then); };
-};
+function objPut(d, k, v, cb) {
+  core(d, k, v);
+  if (cb) { return cb(); }
+  return d;
+}
 
-objPut.mthd = function (k, v, then) { return objPut(this, k, v, then); };
+objPut.core = core;
+objPut.cb = function (o, k) { return objPut.bind(null, o, k); };
+objPut.mthd = function (k, v, cb) { return objPut(this, k, v, cb); };
 
 module.exports = objPut;

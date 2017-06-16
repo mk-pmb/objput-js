@@ -16,7 +16,7 @@ from [test/usage.js](test/usage.js):
 
 <!--#include file="test/usage.js" start="  //#u" stop="  //#r"
   outdent="  " code="javascript" -->
-<!--#verbatim lncnt="29" -->
+<!--#verbatim lncnt="40" -->
 ```javascript
 // For demo purpose, use a pseudo-async function instead of real async
 function counter(step, callback) {
@@ -36,6 +36,10 @@ results.store('dango', '🍡', function afterDango() {
   counter(5, results.store.bind(results, 'eggs'));
 });
 
+objPut(results,
+  [ null, 'herbs',  'water',  'kettle', null,   'boil',   'tea' ],
+  [ 101,  102,      103,      104,      105,    106   ]);
+
 expectEqual(results, {
   apple: 0,
   bacon: 2,
@@ -43,6 +47,13 @@ expectEqual(results, {
   dango: '🍡',
   eggs: 10,
   hello: 'world',
+
+  herbs: 102,
+  water: 103,
+  kettle: 104,
+  boil: 106,
+  tea: undefined,
+
   store: objPut.mthd,
 });
 ```
@@ -52,27 +63,19 @@ expectEqual(results, {
 API
 ---
 
-<!--#include file="objput.js" start="" code="javascript" -->
-<!--#verbatim lncnt="14" -->
-```javascript
-function objPut(o, k, v, then) {
-  o[k] = v;
-  return (then ? then() : o);
-}
-
-objPut.cb = function (o, k) {
-  return function (v, then) { return objPut(o, k, v, then); };
-};
-
-objPut.mthd = function (k, v, then) { return objPut(this, k, v, then); };
-
-module.exports = objPut;
-```
-<!--/include-->
+For more details, you'll have to look at [the source](objput.js) for now.
 
 
 
 <!--#toc stop="scan" -->
+
+
+
+
+Known issues
+------------
+
+* needs more/better tests and docs
 
 
 
