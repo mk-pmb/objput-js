@@ -1,5 +1,5 @@
 { "name": "objput",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Put that value in that slot of that object, then call that callback.",
   "keywords": [ "control flow" ],
 
@@ -18,6 +18,11 @@
   "main": "objput.js",
   "scripts": { "test": "nodejs test/usage.js" },
   "directories": { "test": "test" },
+
+  "devDependencies": {
+    "equal-pmb": "^0.1.10",
+    "usnam-pmb": "^0.2.3"
+  },
 
 
   "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
